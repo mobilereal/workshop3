@@ -12,5 +12,14 @@ def index():
     return JSONResponse(content={"message": "Hello,  World"}, status_code=200)
 
 
+@app.get("/profile/{name}")
+def get_path_parameter(name: str):
+    print(name)
+    return JSONResponse(
+        content={"message": f"My name is : {name}"},
+        status_code=200,
+    )
+
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=3001, reload=True)

@@ -21,5 +21,13 @@ def get_path_parameter(name: str):
     )
 
 
+@app.get("/profile")
+def get_query_parameter(start: int = 0, limit: int = 0):
+    return JSONResponse(
+        content={"message": f"profile start : {start} limit:{limit}"},
+        status_code=200,
+    )
+
+
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=3001, reload=True)
